@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mental Health Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="top">
+  <span class="brand"><i class="brand-sun" aria-hidden="true"></i>Mental Health Signal</span>
+  <h1>Is your daily rhythm helping or hurting?</h1>
+  <p class="lead">Answer 12 quick questions and a trained model estimates your mental health score from 0 to 10. It reads your habits. It is not a diagnosis.</p>
+</header>
+
+<main class="layout">
+
+  <form id="form" class="sheet" novalidate>
+
+    <section class="block">
+      <h2>About you</h2>
+      <div class="grid">
+        <div class="field" data-field="age">
+          <label for="age">Age</label>
+          <input type="number" id="age" name="age" min="10" max="100" step="1" inputmode="numeric" placeholder="21" />
+          <span class="err"></span>
+        </div>
+        <div class="field" data-field="gender">
+          <label id="l-gender">Gender</label>
+          <div class="seg" role="radiogroup" aria-labelledby="l-gender">
+            <label><input type="radio" name="gender" value="Male"><span>Male</span></label>
+            <label><input type="radio" name="gender" value="Female"><span>Female</span></label>
+          </div>
+          <span class="err"></span>
+        </div>
+        <div class="field" data-field="country">
+          <label for="country">Country</label>
+          <input type="text" id="country" name="country" list="country-list" placeholder="India" autocomplete="off" />
+          <datalist id="country-list">
+            <option value="India"></option><option value="USA"></option><option value="Canada"></option>
+            <option value="Australia"></option><option value="UK"></option><option value="Germany"></option>
+            <option value="Mexico"></option><option value="Turkey"></option><option value="France"></option>
+          </datalist>
+          <span class="hint">Not in the list? Type it anyway.</span>
+          <span class="err"></span>
+        </div>
+        <div class="field wide" data-field="academic_level">
+          <label id="l-level">Academic level</label>
+          <div class="seg" role="radiogroup" aria-labelledby="l-level">
+            <label><input type="radio" name="academic_level" value="High School"><span>High school</span></label>
+            <label><input type="radio" name="academic_level" value="Undergraduate"><span>Undergraduate</span></label>
+            <label><input type="radio" name="academic_level" value="Graduate"><span>Graduate</span></label>
+          </div>
+          <span class="err"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Phone and social media</h2>
+      <div class="grid">
+        <div class="field" data-field="most_used_platform">
+          <label for="most_used_platform">Most-used platform</label>
+          <select id="most_used_platform" name="most_used_platform">
+            <option value="" disabled selected hidden>Choose one</option>
+            <option>Facebook</option><option>Instagram</option><option>Snapchat</option>
+            <option>Twitter</option><option>YouTube</option><option>TikTok</option>
+            <option>LinkedIn</option><option>LINE</option><option>KakaoTalk</option>
+            <option>VKontakte</option><option>WhatsApp</option><option>WeChat</option>
+          </select>
+          <span class="err"></span>
+        </div>
+        <div class="field" data-field="daily_unlocks">
+          <label for="daily_unlocks">Phone unlocks per day</label>
+          <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" step="1" inputmode="numeric" placeholder="60" />
+          <span class="err"></span>
+        </div>
+        <div class="field wide" data-field="purpose_of_use">
+          <label id="l-purpose">Main reason you use it</label>
+          <div class="seg wrap" role="radiogroup" aria-labelledby="l-purpose">
+            <label><input type="radio" name="purpose_of_use" value="Networking"><span>Networking</span></label>
+            <label><input type="radio" name="purpose_of_use" value="Education"><span>Education</span></label>
+            <label><input type="radio" name="purpose_of_use" value="Entertainment"><span>Entertainment</span></label>
+            <label><input type="radio" name="purpose_of_use" value="News"><span>News</span></label>
+          </div>
+          <span class="err"></span>
+        </div>
+        <div class="field wide">
+          <div class="range-head"><label for="avg_daily_usage_hours">Screen time per day</label><output for="avg_daily_usage_hours"></output></div>
+          <input type="range" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.5" value="4" />
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Body and mind</h2>
+      <div class="grid">
+        <div class="field wide">
+          <div class="range-head"><label for="sleep_hours_per_night">Sleep per night</label><output for="sleep_hours_per_night"></output></div>
+          <input type="range" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.5" value="7" />
+        </div>
+        <div class="field wide">
+          <div class="range-head"><label for="study_hours">Study per day</label><output for="study_hours"></output></div>
+          <input type="range" id="study_hours" name="study_hours" min="0" max="24" step="0.5" value="3" />
+        </div>
+        <div class="field wide">
+          <div class="range-head"><label for="physical_activity_hours">Physical activity per day</label><output for="physical_activity_hours"></output></div>
+          <input type="range" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24" step="0.5" value="1" />
+        </div>
+        <div class="field wide" data-field="stress_level">
+          <label id="l-stress">How stressed do you feel lately?</label>
+          <div class="seg wrap stress" role="radiogroup" aria-labelledby="l-stress">
+            <label><input type="radio" name="stress_level" value="Low"><span>Low</span></label>
+            <label><input type="radio" name="stress_level" value="Medium"><span>Medium</span></label>
+            <label><input type="radio" name="stress_level" value="High"><span>High</span></label>
+            <label><input type="radio" name="stress_level" value="Very High"><span>Very high</span></label>
+          </div>
+          <span class="err"></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="submit-row">
+      <button type="submit" class="submit" id="submit"><span>Get my score</span><i class="spinner" aria-hidden="true"></i></button>
+    </div>
+  </form>
+
+  <aside class="sky-panel" id="panel" data-state="idle" data-tone="dusk" aria-live="polite">
+    <div class="sky night"></div><div class="sky dusk"></div><div class="sky day"></div>
+
+    <div class="panel-inner">
+      <div class="model-switch" role="radiogroup" aria-label="Prediction model">
+        <label><input type="radio" name="selected_model" value="random_forest" form="form" checked><span>Random forest</span></label>
+        <label><input type="radio" name="selected_model" value="linear_regression" form="form"><span>Linear regression</span></label>
+      </div>
+
+      <svg class="arc" viewBox="0 0 400 236" aria-hidden="true">
+        <line class="horizon" x1="0" y1="200" x2="400" y2="200" />
+        <path class="track" d="M 40 200 A 160 160 0 0 1 360 200" />
+        <path class="trail" id="trail" pathLength="100" d="M 40 200 A 160 160 0 0 1 360 200" />
+        <text x="40" y="224" text-anchor="middle">0</text>
+        <text x="360" y="224" text-anchor="middle">10</text>
+        <g id="sun" transform="translate(40 200)"><circle class="halo" r="34" /><circle class="orb" r="14" /></g>
+      </svg>
+
+      <div class="pane p-idle">
+        <h3>Your score lands here</h3>
+        <p>Fill in the form and pick a model. The sun moves along the arc to show where you land.</p>
+      </div>
+
+      <div class="pane p-load">
+        <h3>Reading your rhythm</h3>
+        <p>Running your answers through the model.</p>
+      </div>
+
+      <div class="pane p-result">
+        <div class="result-body">
+          <div class="score-line"><span class="score" id="score">0.00</span><span class="of">/10</span></div>
+          <h3 id="band"></h3>
+          <p id="context"></p>
+          <ul class="nudges" id="nudges"></ul>
+          <div class="compare" aria-label="Scores by model">
+            <div data-m="random_forest"><span>Random forest</span><b>-</b></div>
+            <div data-m="linear_regression"><span>Linear regression</span><b>-</b></div>
+          </div>
+          <p class="hint-line">Switch the model above to compare the two.</p>
+        </div>
+        <p class="stale-note">Your answers changed. Get a new score to update.</p>
+      </div>
+
+      <div class="pane p-error">
+        <h3 id="err-title"></h3>
+        <p id="err-copy"></p>
+        <button type="button" class="retry" id="retry">Try again</button>
+      </div>
+    </div>
+  </aside>
+
+</main>
+
+<footer class="foot">
+  <p>For information only, not a clinical assessment. If you're struggling, please talk to someone you trust or a mental health professional.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
